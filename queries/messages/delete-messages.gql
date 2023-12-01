@@ -1,0 +1,5 @@
+mutation($id: [uuid!]) {
+  delete_messages(where: { id: { _in: $id } }) {
+    affected_rows
+  }
+}

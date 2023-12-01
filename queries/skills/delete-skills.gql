@@ -1,0 +1,5 @@
+mutation($id: [uuid!]) {
+  delete_skills(where: { id: { _in: $id } }) {
+    affected_rows
+  }
+}

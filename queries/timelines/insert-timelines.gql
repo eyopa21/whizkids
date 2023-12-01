@@ -1,0 +1,5 @@
+mutation($user_id: uuid!, $title: String!, $description: String!, $location: String!, $from: date!, $to: date!, $type: timeline_type_enum!) {
+  insert_timelines_one(object: {user_id: $user_id, title: $title, description: $description, location: $location, from: $from, to: $to, type: $type}) {
+    to
+  }
+}

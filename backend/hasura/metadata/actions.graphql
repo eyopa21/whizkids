@@ -1,0 +1,131 @@
+type Mutation {
+  ChangePassword(
+    id: uuid!
+    new_password: String!
+    old_password: String!
+  ): ChangePasswordOutput
+}
+
+type Mutation {
+  ForgotPassword(
+    email: String!
+  ): ForgotPasswordOutput
+}
+
+type Mutation {
+  GuestLogin(
+    email: String!
+    password: String!
+  ): GuestLoginOutput
+}
+
+type Mutation {
+  Login(
+    email: String!
+    password: String!
+  ): LoginOutput
+}
+
+type Mutation {
+  RegisterGuest(
+    user_id: uuid!
+    user_name: String!
+    email: String!
+    is_super_guest: Boolean!
+  ): Guest
+}
+
+type Mutation {
+  SendMessage(
+    user_id: uuid!
+    phone_number: String!
+    subject: String!
+    message: String!
+    full_name: String!
+    email: String!
+  ): SendMessageOutput
+}
+
+type Mutation {
+  SignUp(
+    email: String!
+    password: String!
+    first_name: String!
+    last_name: String!
+    user_name: String!
+    phone_number: String!
+    date_of_birth: date!
+    logo: String!
+    profile_picture: String!
+    profession: String!
+    location: String!
+    work_place: String!
+    role: String!
+  ): SignUpOutput
+}
+
+type Mutation {
+  UploadImage(
+    base64: String!
+  ): Image
+}
+
+type Mutation {
+  verify(
+    id: uuid!
+    code: String!
+  ): verifyOutput
+}
+
+type LoginOutput {
+  email: String!
+  id: uuid!
+  password: String!
+  token: String!
+}
+
+type SignUpOutput {
+  email: String!
+  id: uuid!
+  password: String!
+  token: String!
+}
+
+type verifyOutput {
+  email: String!
+  id: uuid!
+  is_verified: Boolean!
+}
+
+type Image {
+  url: String!
+}
+
+type Guest {
+  id: uuid!
+  password: String!
+}
+
+type GuestLoginOutput {
+  email: String!
+  id: uuid!
+  user_id: String!
+  token: String!
+  is_super_guest: Boolean!
+  is_suspended: Boolean!
+  is_verified: Boolean!
+  password: String!
+}
+
+type ForgotPasswordOutput {
+  id: uuid!
+}
+
+type ChangePasswordOutput {
+  id: uuid!
+}
+
+type SendMessageOutput {
+  id: uuid!
+}
+

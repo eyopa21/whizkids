@@ -1,0 +1,2 @@
+SET check_function_bodies = false;
+INSERT INTO public.users (id, first_name, last_name, date_of_birth, user_name, phone_number, logo, profile_picture, email, password, created_at, updated_at, code, is_verified, profession, work_place, role, location) VALUES ('ddd4de75-3374-4e10-be8f-c3d0085e50d0', 'eyob', 'nigu', '2033-11-22', 'job', '0918784596', 'logo', 'pic', 'job@gmail.com', '$2b$10$4XD71Mjzefi0r4pgXfQrp.I8EkEJB/BRPHHNLVunzLSnhyHdLRt76', '2023-10-21 19:25:02.919319+00', '2023-10-21 19:59:57.355873+00', '94651', true, 'Software Engineer', NULL, NULL, 'Addis Ababa');

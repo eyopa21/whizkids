@@ -1,0 +1,133 @@
+table:
+  name: skills
+  schema: public
+object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+insert_permissions:
+  - role: super-guest
+    permission:
+      check:
+        user:
+          guests:
+            id:
+              _eq: X-Hasura-Guest-Id
+      columns:
+        - value
+        - skill_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+    comment: ""
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+        - value
+        - skill_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+    comment: ""
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - value
+        - skill_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter: {}
+    comment: ""
+  - role: guest
+    permission:
+      columns:
+        - value
+        - skill_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter: {}
+    comment: ""
+  - role: super-guest
+    permission:
+      columns:
+        - value
+        - skill_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter: {}
+    comment: ""
+  - role: user
+    permission:
+      columns:
+        - value
+        - skill_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter: {}
+    comment: ""
+update_permissions:
+  - role: super-guest
+    permission:
+      columns:
+        - value
+        - skill_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter:
+        user:
+          guests:
+            id:
+              _eq: X-Hasura-Guest-Id
+      check:
+        user:
+          guests:
+            id:
+              _eq: X-Hasura-Guest-Id
+    comment: ""
+  - role: user
+    permission:
+      columns:
+        - value
+        - skill_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+    comment: ""
+delete_permissions:
+  - role: super-guest
+    permission:
+      filter:
+        user:
+          guests:
+            id:
+              _eq: X-Hasura-Guest-Id
+    comment: ""
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+    comment: ""

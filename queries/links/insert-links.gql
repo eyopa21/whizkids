@@ -1,0 +1,5 @@
+mutation( $user_id: uuid!,$link_name: String!, $the_link: String!, $icon: String!) {
+  insert_links_one(object: {user_id: $user_id, link_name: $link_name, the_link: $the_link, icon: $icon}) {
+    id
+  }
+}

@@ -1,0 +1,5 @@
+mutation($id: uuid!) {
+  delete_guests_by_pk(id: $id) {
+    id
+  }
+}

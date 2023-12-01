@@ -1,0 +1,5 @@
+mutation($id: uuid!, $name: String!, $description: String!, $icon: String!) {
+  update_services_by_pk(pk_columns: {id: $id}, _set: {name: $name, description: $description, icon: $icon}) {
+    id
+  }
+}

@@ -1,0 +1,5 @@
+mutation ($id: uuid!, $title: String!, $subtitle: String, $description: String!,$category: String!,$is_commentable: Boolean!, $images: [String]!) {
+  update_blogs_by_pk(pk_columns: {id: $id}, _set: {title: $title, subtitle: $subtitle, description: $description, category: $category, is_commentable: $is_commentable, images: $images}) {
+    id
+  }
+}

@@ -1,0 +1,11 @@
+mutation($email: String!, $password: String!) {
+  GuestLogin(email: $email, password: $password) {
+    id
+    user_id
+    token
+    email
+    is_suspended
+    is_super_guest
+    is_verified
+  }
+}

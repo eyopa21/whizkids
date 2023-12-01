@@ -1,0 +1,5 @@
+mutation($id: uuid!) {
+  delete_links_by_pk(id: $id) {
+    id
+  }
+}

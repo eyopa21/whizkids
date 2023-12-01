@@ -1,0 +1,5 @@
+mutation($user_id: uuid!, $title: String!, $description: String!, $icon: String!) {
+  insert_behaviors_one(object: {user_id: $user_id, title: $title, description: $description, icon: $icon}) {
+    id
+  }
+}

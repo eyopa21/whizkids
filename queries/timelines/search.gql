@@ -1,0 +1,14 @@
+query search($search: String!){
+  timelines(where: {_or: [{ title: { _ilike: $search } } { location: { _ilike: $search } } { description: { _ilike: $search } } ]}) {
+  id
+    user_id
+    title
+    location
+    description
+    to
+    from
+    type
+    created_at
+    updated_at
+  }
+}

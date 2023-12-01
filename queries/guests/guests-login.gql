@@ -1,0 +1,5 @@
+mutation($email: String!, $password: String!) {
+  GuestLogin(email: $email, password: $password) {
+    id
+  }
+}

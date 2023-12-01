@@ -1,0 +1,5 @@
+mutation ($id: uuid!, $skill_name: String!, $value: Int!, $right: Boolean!) {
+  update_skills_by_pk(pk_columns: {id: $id}, _set: {skill_name: $skill_name, value: $value, right: $right}) {
+    id
+  }
+}

@@ -1,0 +1,225 @@
+table:
+  name: users
+  schema: public
+array_relationships:
+  - name: behaviors
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: behaviors
+          schema: public
+  - name: blogs
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: blogs
+          schema: public
+  - name: guests
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: guests
+          schema: public
+  - name: links
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: links
+          schema: public
+  - name: messages
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: messages
+          schema: public
+  - name: projects
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: projects
+          schema: public
+  - name: services
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: services
+          schema: public
+  - name: skills
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: skills
+          schema: public
+  - name: timelines
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: timelines
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - is_verified
+        - date_of_birth
+        - code
+        - email
+        - first_name
+        - last_name
+        - location
+        - logo
+        - password
+        - phone_number
+        - profession
+        - profile_picture
+        - role
+        - user_name
+        - work_place
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+    comment: ""
+  - role: guest
+    permission:
+      columns:
+        - is_verified
+        - date_of_birth
+        - code
+        - email
+        - first_name
+        - last_name
+        - location
+        - logo
+        - password
+        - phone_number
+        - profession
+        - profile_picture
+        - role
+        - user_name
+        - work_place
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+    comment: ""
+  - role: super-guest
+    permission:
+      columns:
+        - is_verified
+        - date_of_birth
+        - code
+        - email
+        - first_name
+        - last_name
+        - location
+        - logo
+        - password
+        - phone_number
+        - profession
+        - profile_picture
+        - role
+        - user_name
+        - work_place
+        - created_at
+        - updated_at
+        - id
+      filter: {}
+    comment: ""
+  - role: user
+    permission:
+      columns:
+        - code
+        - created_at
+        - date_of_birth
+        - email
+        - first_name
+        - id
+        - is_verified
+        - last_name
+        - location
+        - logo
+        - password
+        - phone_number
+        - profession
+        - profile_picture
+        - role
+        - updated_at
+        - user_name
+        - work_place
+      filter: {}
+    comment: ""
+update_permissions:
+  - role: super-guest
+    permission:
+      columns:
+        - code
+        - created_at
+        - date_of_birth
+        - email
+        - first_name
+        - is_verified
+        - last_name
+        - location
+        - logo
+        - phone_number
+        - profession
+        - profile_picture
+        - role
+        - updated_at
+        - user_name
+        - work_place
+      filter:
+        guests:
+          id:
+            _eq: X-Hasura-Guest-Id
+      check:
+        guests:
+          id:
+            _eq: X-Hasura-Guest-Id
+    comment: ""
+  - role: user
+    permission:
+      columns:
+        - code
+        - created_at
+        - date_of_birth
+        - email
+        - first_name
+        - is_verified
+        - last_name
+        - location
+        - logo
+        - password
+        - phone_number
+        - profession
+        - profile_picture
+        - role
+        - updated_at
+        - user_name
+        - work_place
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      check: null
+    comment: ""
+event_triggers:
+  - name: MianLog
+    definition:
+      enable_manual: false
+      update:
+        columns: '*'
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: http://host.docker.internal:4000/api/v1/logs/logs

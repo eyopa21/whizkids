@@ -1,0 +1,69 @@
+actions:
+  - name: ChangePassword
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/api/v1/auth/changepassword
+    permissions:
+      - role: user
+  - name: ForgotPassword
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/api/v1/auth/forgotpassword
+    permissions:
+      - role: anonymous
+  - name: GuestLogin
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/api/v1/guest/login
+    permissions:
+      - role: anonymous
+  - name: Login
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/api/v1/auth/login
+    permissions:
+      - role: anonymous
+  - name: RegisterGuest
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/api/v1/guest/register
+    permissions:
+      - role: user
+  - name: SendMessage
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/api/v1/email/sendmessage
+    permissions:
+      - role: user
+      - role: anonymous
+  - name: SignUp
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/api/v1/auth/signup
+  - name: UploadImage
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/api/v1/image/upload
+    permissions:
+      - role: super-guest
+      - role: user
+  - name: verify
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:4001/api/v1/auth/verify
+    permissions:
+      - role: user
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+    - name: LoginOutput
+    - name: SignUpOutput
+    - name: verifyOutput
+    - name: Image
+    - name: Guest
+    - name: GuestLoginOutput
+    - name: ForgotPasswordOutput
+    - name: ChangePasswordOutput
+    - name: SendMessageOutput
+  scalars: []

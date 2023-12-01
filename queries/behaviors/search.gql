@@ -1,0 +1,11 @@
+query search($search: String!){
+  behaviors(where: {_or: [{ title: { _ilike: $search } } { description: { _ilike: $search } } ]}) {
+    id
+    title
+    icon
+    description
+    created_at
+    updated_at
+    user_id
+  }
+}

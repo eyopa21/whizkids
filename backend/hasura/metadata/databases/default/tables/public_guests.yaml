@@ -1,0 +1,85 @@
+table:
+  name: guests
+  schema: public
+object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+select_permissions:
+  - role: guest
+    permission:
+      columns:
+        - is_super_guest
+        - is_suspended
+        - is_verified
+        - email
+        - password
+        - user_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter: {}
+    comment: ""
+  - role: super-guest
+    permission:
+      columns:
+        - is_super_guest
+        - is_suspended
+        - is_verified
+        - email
+        - password
+        - user_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+    comment: ""
+  - role: user
+    permission:
+      columns:
+        - is_super_guest
+        - is_suspended
+        - is_verified
+        - email
+        - password
+        - user_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+    comment: ""
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - is_super_guest
+        - is_suspended
+        - is_verified
+        - email
+        - password
+        - user_name
+        - created_at
+        - updated_at
+        - id
+        - user_id
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+    comment: ""
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+    comment: ""

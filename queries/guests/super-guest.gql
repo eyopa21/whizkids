@@ -1,0 +1,5 @@
+mutation($id: uuid!, $is_super_guest: Boolean!) {
+  update_guests_by_pk(pk_columns: {id: $id}, _set: {is_super_guest: $is_super_guest}) {
+    id
+  }
+}

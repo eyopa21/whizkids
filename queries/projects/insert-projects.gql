@@ -1,0 +1,5 @@
+mutation($user_id: uuid!, $title: String!, $subtitle: String!, $link: String!, $description: String!, $date: date!, $client: String!, $images: [String]!) {
+  insert_projects_one(object: {user_id: $user_id, title: $title, subtitle: $subtitle, link: $link, description: $description, date: $date, client: $client, images: $images}) {
+    id
+  }
+}

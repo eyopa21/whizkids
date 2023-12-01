@@ -1,0 +1,14 @@
+query search($search: String!){
+  blogs(where: {_or: [{ title: { _ilike: $search } } { subtitle: { _ilike: $search } } { category: { _ilike: $search } } { description: { _ilike: $search } } ]}) {
+     id
+    user_id
+    title
+    subtitle
+    category
+    description
+    is_commentable
+    images
+    created_at
+    updated_at
+  }
+}

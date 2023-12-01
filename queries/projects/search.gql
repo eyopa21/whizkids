@@ -1,0 +1,15 @@
+query search($search: String! ){
+  projects(where: {_or: [{ title: { _ilike: $search } }  { subtitle: { _ilike: $search } }  { link: { _ilike: $search } }  { client: { _ilike: $search } } { description: { _ilike: $search } } ]} ){
+    id
+    user_id
+    title
+    subtitle
+    link
+    date
+    client
+    description
+    images
+    created_at
+    updated_at
+  }
+}

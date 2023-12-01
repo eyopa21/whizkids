@@ -1,0 +1,13 @@
+query myQuery($user_id: uuid!){
+  logs(where: {user_id: {_eq: $user_id}}) {
+    id
+    user_id
+    email
+    table
+    operation
+    description
+    guest_id
+    created_at
+    updated_at
+  }
+}

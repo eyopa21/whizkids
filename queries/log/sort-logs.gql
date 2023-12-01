@@ -1,0 +1,12 @@
+query myQuery($sort: [logs_order_by!], $user_id: uuid!) {
+  logs(order_by: $sort,  where: {user_id: {_eq: $user_id}}) {
+    id
+    email
+    guest_id
+    description
+    created_at
+    operation
+    table
+    updated_at
+  }
+}

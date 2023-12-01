@@ -1,0 +1,5 @@
+mutation($user_id: uuid!, $name: String!, $description: String!, $icon: String!) {
+  insert_services_one(object: {user_id: $user_id, name: $name, description: $description, icon: $icon}) {
+    id
+  }
+}
