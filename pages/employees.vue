@@ -74,13 +74,13 @@
 
                                             <td class="flex justify-end p-4 space-x-2 whitespace-nowrap lg:p-5 ">
 
-                                                <VueButton
+                                                <!--VueButton
                                                     @click=" layout.showemployeeModal = true; employeeToBeEdited = employee"
-                                                    name="Edit Item" type="button" variation="edit" />
+                                                    name="Edit Item" type="button" variation="edit" /-->
 
                                                 <VueButton
                                                     @click="selected.length = 0; selected.push(employee.id); layout.showDeleteAlert = true"
-                                                    name="Delete Item" type="button" variation="delete" />
+                                                    name="Delete Employee" type="button" variation="delete" />
                                                 <VueAlert v-if="layout.showDeleteAlert" @delete="deleteemployees()"
                                                     :loading="loading" />
                                             </td>
@@ -97,8 +97,7 @@
 
             </div>
             <VuePagination :amount="parseInt(employees?.length)" @paginate="(n) => { paginate(n) }" />
-            <VueModal v-if="layout.showemployeeModal" :employee="employeeToBeEdited"
-                @close="layout.showemployeeModal = false; employeeToBeEdited = ''" />
+            <VueModal v-if="layout.showEmployeeModal" @close="layout.showEmployeeModal = false" />
 
         </ClientOnly>
     </div>

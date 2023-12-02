@@ -1,5 +1,0 @@
-mutation($id: uuid!, $link_name: String!, $the_link: String!, $icon: String!) {
-  update_links_by_pk(pk_columns: {id: $id}, _set: {link_name: $link_name, the_link: $the_link, icon: $icon}) {
-    id
-  }
-}

@@ -1,5 +1,0 @@
-mutation ($user_id: uuid!, $title: String!, $subtitle: String, $description: String!, $category: String!, $is_commentable: Boolean!, $images: [String]!) {
-  insert_blogs_one(object: {user_id: $user_id, title: $title, subtitle: $subtitle, description: $description, category: $category, is_commentable: $is_commentable, images: $images}) {
-    id
-  }
-}

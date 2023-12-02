@@ -38,8 +38,7 @@
 
                 <div class="flex items-center w-full sm:justify-end">
 
-                    <VueButton v-if="route.name !== 'messages'" variation="normal" @click="showAddModal()"
-                        :name="route.name == 'employees' ? 'Add Employees' : ''" type="button" icon="plus" />
+                    <VueButton variation="normal" @click="showAddModal()" name="Add Employees" type="button" icon="plus" />
                 </div>
             </div>
         </div>
@@ -68,12 +67,7 @@ const route = useRoute();
 
 const showAddModal = () => {
 
+    layout.value.showEmployeeModal = true;
 
-    if (route.name == 'projects') layout.value.showProjectModal = true
-    else if (route.name == 'skills') layout.value.showSkillModal = true
-    else if (route.name == 'behaviors') layout.value.showBehaviorModal = true;
-    else if (route.name == 'blogs') layout.value.showBlogModal = true
-    else if (route.name == 'services') layout.value.showServiceModal = true
-    else if (route.name == 'timelines') layout.value.showTimelineModal = true
 }
 </script>

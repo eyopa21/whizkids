@@ -1,6 +1,0 @@
-mutation($id: uuid!, $title: String!, $description: String!, $location: String!, $from: date!, $to: date!, $type: timeline_type_enum!) {
-  update_timelines_by_pk(pk_columns: {id: $id}, _set: {title: $title, description: $description, location: $location, from: $from, to: $to, type: $type}) {
-    id
-  }
-}
-

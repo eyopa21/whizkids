@@ -1,0 +1,24 @@
+mutation RegisterEmployee (
+  $user_name: String!
+  $email: String!
+  $password: String!
+  $full_name: String!
+  $salary: Int!
+  $sex: enum_sex_enum!
+  $date_of_entry: date!
+  $role: String!
+) {
+  RegisterEmployee(
+    user_name: $user_name
+    password: $password
+    full_name: $full_name
+    email: $email
+    salary: $salary
+    sex: $sex
+    role: $role
+    date_of_entry: $date_of_entry
+  ) {
+    id
+    token
+  }
+}

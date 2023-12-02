@@ -1,5 +1,0 @@
-mutation($id: uuid!, $title: String!, $subtitle: String!, $link: String!, $description: String!, $date: date!, $client: String!, $images: [String]!) {
-  update_projects_by_pk(pk_columns: {id: $id}, _set: {title: $title, subtitle: $subtitle, link: $link, description: $description, date: $date, client: $client, images: $images}) {
-    id
-  }
-}

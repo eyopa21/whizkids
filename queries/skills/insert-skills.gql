@@ -1,5 +1,0 @@
-mutation($user_id: uuid!, $skill_name: String!, $value: Int!, $right: Boolean!) {
-  insert_skills_one(object: {user_id: $user_id, skill_name: $skill_name, value: $value, right:$right}) {
-    id
-  }
-}

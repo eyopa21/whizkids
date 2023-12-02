@@ -1,6 +1,0 @@
-
-mutation($user_id:uuid!,  $email: String!, $full_name: String!,$message: String!, $phone_number: String!, $subject: String!) {
-  SendMessage(email: $email, full_name: $full_name, message: $message, phone_number: $phone_number, subject: $subject, user_id: $user_id) {
-    id
-  }
-}

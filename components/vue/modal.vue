@@ -11,16 +11,13 @@
 
           <div class="flex justify-between items-start p-5 rounded-t border-b">
             <h3 class="text-xl font-semibold dark:text-white">
-              <div
-                v-if="props.behavior === '' || props.timeline === '' || props.blog === '' || props.project === '' || props.skill === '' || props.service === ''">
+              <div>
                 <div>
 
-                  Add New {{ route.name }} {{ props.behavior }}
+                  Add New Employee
                 </div>
               </div>
-              <div v-else>
-                Edit {{ route.name }}
-              </div>
+
 
 
 
@@ -37,14 +34,8 @@
 
           <div class="p-6 space-y-6">
 
-            <FormsSkillForm v-if="route.name == 'skills'" :skill="props.skill" />
-            <FormsProjectForm v-if="route.name == 'projects'" :project="props.project" />
-            <FormsBehaviorForm v-if="route.name == 'behaviors'" :behavior="props.behavior" />
-            <FormsServiceForm v-if="route.name == 'services'" :service="props.service" />
-            <FormsTimelineForm v-if="route.name == 'timelines'" :timeline="props.timeline" />
-            <FormsBlogForm v-if="route.name == 'blogs'" :blog="props.blog" />
-            <FormsLinksForm v-if="props.showSocialLinkModal" :link="props.link" />
-            <FormsInviteForm v-if="props.showInviteModal" />
+            <FormsEmployeeForm />
+
 
 
           </div>
@@ -62,8 +53,6 @@
 <script setup>
 
 const route = useData().value;
-const props = defineProps(['skill', 'project', 'behavior', 'service', 'timeline', 'blog', 'showSocialLinkModal', 'link', 'showInviteModal'])
 const emit = defineEmits(['close'])
-const test = ref([])
-test.value.lastIndexOf
+
 </script>

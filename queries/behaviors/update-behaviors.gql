@@ -1,5 +1,0 @@
-mutation($id: uuid!, $title: String!, $description: String!, $icon: String!) {
-  update_behaviors_by_pk(pk_columns: {id: $id}, _set: {title: $title, description: $description, icon: $icon}) {
-    id
-  }
-}
