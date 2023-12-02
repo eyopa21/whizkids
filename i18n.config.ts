@@ -3,7 +3,7 @@ export default defineI18nConfig(() => ({
     //locale: 'am',
     messages: {
         en: {
-            welcome: 'Eyoba\'s admin panel',
+            welcome: 'Whiz kids workshop',
             lang: 'English(US)',
             navs: ['Dashboard', 'Settings', 'Behaviors', 'Projects', 'Skills', 'Services', 'Timelines', 'Blogs', 'Test2']
         },

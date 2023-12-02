@@ -79,8 +79,8 @@ const navs = ref([{
 */
 
 {
-    name: 'Behaviors',
-    to: '/behaviors',
+    name: 'Employees',
+    to: '/employees',
     icon: 'raphael:anonymous'
 },
 
@@ -90,30 +90,11 @@ const navs = ref([{
     icon: 'heroicons-solid:briefcase'
 },
 {
-    name: 'Skills',
-    to: '/skills',
+    name: 'Main',
+    to: '/main',
     icon: 'heroicons:code-bracket-20-solid'
 },
-{
-    name: 'Services',
-    to: '/services',
-    icon: 'heroicons:hand-raised-solid'
-},
-{
-    name: 'Timelines',
-    to: '/timelines',
-    icon: 'heroicons:academic-cap-20-solid'
-},
-{
-    name: 'Blogs',
-    to: '/blogs',
-    icon: 'heroicons:newspaper-20-solid'
-},
-{
-    name: 'Settings',
-    to: '/settings',
-    icon: 'heroicons:cog-6-tooth-20-solid'
-},
+
     /*
     {
         name: 'Test',
