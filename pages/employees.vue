@@ -109,7 +109,7 @@
 const mainData = useData()
 const employees = ref([{
     id: 1,
-    name: 'Eyoba nigussie',
+    name: 'Eyob nigussie',
     age: 22,
     sex: 'male',
     date_of_entry: '12/33/44',
@@ -118,7 +118,7 @@ const employees = ref([{
 },
 {
     id: 2,
-    name: 'Eyoba nigussie',
+    name: 'Eyob nigussie',
     age: 22,
     sex: 'male',
     date_of_entry: '12/33/44',
@@ -127,7 +127,7 @@ const employees = ref([{
 },
 {
     id: 3,
-    name: 'Eyoba nigussie',
+    name: 'Eyob nigussie',
     age: 22,
     sex: 'male',
     date_of_entry: '12/33/44',
@@ -136,7 +136,7 @@ const employees = ref([{
 },
 {
     id: 4,
-    name: 'Eyoba nigussie',
+    name: 'Eyob nigussie',
     age: 22,
     sex: 'male',
     date_of_entry: '12/33/44',
@@ -145,7 +145,7 @@ const employees = ref([{
 },
 {
     id: 5,
-    name: 'Eyoba nigussie',
+    name: 'Eyob nigussie',
     age: 22,
     sex: 'male',
     date_of_entry: '12/33/44',

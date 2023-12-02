@@ -28,7 +28,7 @@
                         <li @click="layout.showSideBar = false" v-for="( i, key ) in  navs " :key="key" class="">
 
 
-                            <NuxtLink :to="localePath(i.to)"
+                            <NuxtLink :to="i.to"
                                 class="flex items-center py-2.5 px-3 text-base font-normal text-dark-500 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 group  transition-all duration-200"
                                 exact-active-class="bg-gray-200 dark:bg-gray-700">
                                 <div
@@ -43,7 +43,7 @@
                                     }}
                                 </span>
                             </NuxtLink>
-                            <hr v-if="key == 0 || key == 6"
+                            <hr v-if="key == 0"
                                 class="border-0 mt-2 h-px last:mb-2 bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100">
                         </li>
 
@@ -70,13 +70,6 @@ const navs = ref([{
     to: '/',
     icon: 'heroicons:adjustments-horizontal-20-solid'
 },
-/*
-{
-    name: 'LOgin',
-    to: '/auth/login',
-    icon: 'heroicons:arrow-left-on-rectangle-20-solid'
-},
-*/
 
 {
     name: 'Employees',
@@ -84,29 +77,14 @@ const navs = ref([{
     icon: 'raphael:anonymous'
 },
 
-{
-    name: 'Projects',
-    to: '/projects',
-    icon: 'heroicons-solid:briefcase'
-},
+
 {
     name: 'Main',
     to: '/main',
     icon: 'heroicons:code-bracket-20-solid'
 },
 
-    /*
-    {
-        name: 'Test',
-        to: '/test',
-        icon: ''
-    },
-    {
-        name: 'Test2',
-        to: '/test2',
-        icon: ''
-    }
-    */
+
 ])
 </script>
 
