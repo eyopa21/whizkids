@@ -4,6 +4,7 @@ export default function() {
 
         return {
             employees: '',
+            attendances: '',
             user: '',
             currentGuest: '',
             messages: [{

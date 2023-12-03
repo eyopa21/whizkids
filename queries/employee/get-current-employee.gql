@@ -1,0 +1,20 @@
+query myQuery($id: uuid!){
+  users_by_pk(id: $id) {
+    id
+    user_name
+    full_name
+    sex
+    role
+    salary
+    email
+    date_of_entry
+    created_at
+    attendances(order_by: { created_at: asc }) {
+      id
+      date
+      shift
+      time
+      created_at
+    }
+  }
+}

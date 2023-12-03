@@ -27,13 +27,16 @@
 
 <script setup>
 import employee_query from './queries/employee/get-employees.gql'
+import current_employee_query from './queries/employee/get-current-employee.gql'
 import useLayout from './composables/useLayout';
 const { clients, getToken, onLogin, onLogout } = useApollo()
 const route = useRoute()
+const router = useRouter();
 const nuxtApp = useNuxtApp();
 const layout = useLayout();
 const mainData = useData();
 const height = 10;
+const uid = useCookie('uid');
 nuxtApp.provide('reFetch', () => {
   console.log("refteching")
   refetch()
@@ -43,19 +46,27 @@ nuxtApp.provide('reFetch', () => {
 })
 
 const { data } = await useAsyncQuery(employee_query)
-const { load, result, loading, refetch } = useLazyQuery(employee_query, { fetchPolicy: 'no-cache' })
-await load();
+const { load, result, loading, refetch } = useLazyQuery(current_employee_query, { id: uid.value }, { fetchPolicy: 'no-cache' })
+try {
+  if (uid.value) {
+    await load();
+  }
 
-console.log("res", result.value)
-if (result.value) {
+  console.log("res", result.value)
+  if (result.value) {
 
-  mainData.value.employees = computed(() => {
-    return result.value.users;
-  })
+    mainData.value.user = computed(() => {
+      return result.value.users_by_pk;
+    })
+
+  }
+  else {
+    layout.value.showAlert = { error: true, message: 'Cannot fetch, Please check your connection and try again' }
+  }
+} catch (error) {
+  console.log("eroror", error)
 }
-else {
-  layout.value.showAlert = { error: true, message: 'Cannot fetch, Please check your connection and try again' }
-}
+
 
 </script>
 

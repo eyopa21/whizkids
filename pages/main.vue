@@ -3,7 +3,7 @@
 const layout = useLayout();
 const query = gql`
 mutation {
-  Attend(employee_id: "b3806149-1b18-4200-b7c7-e5683202db3b") {
+  Attend(employee_id: "854f2d15-be7c-429e-b190-014660d8d65a") {
     id
   }
 }

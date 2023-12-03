@@ -11,4 +11,5 @@ query MyQuery {
     created_at
     updated_at
   }
+  
 }

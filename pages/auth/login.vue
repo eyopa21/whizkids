@@ -19,18 +19,14 @@
                         placeholder="**********" rule="password" />
                     <div class="flex items-start">
                         <div class="ml-3 text-sm">
-                            <NuxtLink to="/auth/guest/login"
-                                class="ml-auto text-sm text-gray-900 dark:text-white underline hover:underline">Login as
-                                guest
 
-                            </NuxtLink>
                         </div>
                         <NuxtLink to="/auth/forgot" class="ml-auto text-sm text-fuchsia-600 hover:underline">Lost Password?
                         </NuxtLink>
                     </div>
 
-                    <VueButton :loading="loading || loadin" name="Login to your account" className="py-3  "
-                        variation="normal" type="submit" />
+                    <VueButton :loading="loading" name="Login to your account" className="py-3  " variation="normal"
+                        type="submit" />
 
                     <!--div class="text-sm font-medium text-gray-500">
                         Not registered?
@@ -43,8 +39,9 @@
 </template>
 <script setup>
 import { useForm } from "vee-validate";
-import login_query from '../queries/auth.gql'
-import query from '../../queries/users/get-users.gql'
+import login_query from '../queries/auth/employee-login.gql'
+import current_employee_query from '../queries/employee/get-current-employee.gql'
+
 const { onLogin, onLogout } = useApollo()
 const router = useRouter()
 
@@ -53,7 +50,9 @@ const token = useCookie('token');
 const mainData = useData()
 const layout = useLayout()
 
-const { mutate: loginn, onDone, onError, loading } = useMutation(login_query)
+const { mutate: Login, onDone, onError, loading } = useMutation(login_query)
+//const { onResult, onError: onQueryError, loading: onQueryLoading } = useQuery(current_employee_query, { id: uid.value })
+
 const loadin = ref(false)
 const { handleSubmit } = useForm();
 
@@ -61,19 +60,36 @@ const login = handleSubmit(async (formValues) => {
     console.log(formValues);
 
     loadin.value = true
-    loginn({ email: formValues.email, password: formValues.password })
+    Login({ email: formValues.email, password: formValues.password })
     onDone(async res => {
-
+        await onLogin(res.data.Login.token)
+        uid.value = res.data.Login.id
+        token.value = res.data.Login.token
         router.push('/')
+        const { data, error } = await useLazyAsyncQuery(current_employee_query, { id: res.data.Login.id })
+        if (error.value) {
+            layout.value.showAlert = { error: true, message: error.value }
+            onLogout()
+            uid.value = null;
+            token.value = null;
+        } else {
 
+
+            mainData.value.user = data.value.users_by_pk
+            layout.value.showAlert = { error: false, message: 'Login success' }
+            reloadNuxtApp({
+                path: "/",
+                ttl: 1000,
+            });
+
+
+        }
     })
     onError(err => {
         console.log("eroror", err)
-        auth.value.token = ''
         onLogout()
         token.value = null
         uid.value = null
-
         layout.value.showAlert = { error: true, message: err.message }
     })
 })

@@ -44,7 +44,7 @@ export default defineNuxtConfig({
         //authHeader: {'x-hasura-admin-secret': 'WfYLj861FHQaeZIeshj6B5FLiQItUAbKhD6cRk3CnecscCPQPZLJIkkbL2EGSmVV'},
         httpLinkOptions: {
           headers: {
-            'x-hasura-admin-secret': 'Kre67iqkdXoNM9gjl46syGd80IffFGv5XmhcTmKIBVeMChl1asuXtQv10lndaXKr'
+            // 'x-hasura-admin-secret': 'Kre67iqkdXoNM9gjl46syGd80IffFGv5XmhcTmKIBVeMChl1asuXtQv10lndaXKr'
           }
         },
 

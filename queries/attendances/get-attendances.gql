@@ -1,0 +1,19 @@
+query myQuery {
+  attendance {
+    id
+    shift
+    date
+    time
+    created_at
+    user {
+      id
+      user_name
+      full_name
+      role
+      salary
+      sex
+      email
+      date_of_entry
+    }
+  }
+}
