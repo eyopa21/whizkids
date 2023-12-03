@@ -47,7 +47,7 @@ nuxtApp.provide('reFetch', () => {
 })
 
 //const { data } = await useAsyncQuery(employee_query)
-const { load, result, loading, refetch } = useLazyQuery(current_employee_query, { id: uid.value ? uid.value : null })
+const { load, result, loading, refetch } = useLazyQuery(current_employee_query, { id: uid.value ? uid.value : null }, { fetchPolicy: 'no-cache' })
 setTimeout(async () => {
   try {
     await load();
@@ -77,13 +77,12 @@ setTimeout(async () => {
         console.log(error.value)
         layout.value.showAlert = { error: true, message: error }
       } else {
-        console.log(data.value)
-
+        console.log("main", data.value)
         mainData.value.employees = computed(() => {
-          return result.value.employees;
+          return data.value.users;
         })
         mainData.value.attendances = computed(() => {
-          return result.value.attendances;
+          return data.value.attendance;
         })
       }
     } else {
@@ -91,7 +90,10 @@ setTimeout(async () => {
       onLogout()
       token.value = null
       uid.value = null
-      router.push('/auth/login')
+      if (route.name !== 'auth-admin-login') {
+
+        router.push('/auth/login')
+      }
     }
 
 
@@ -100,7 +102,6 @@ setTimeout(async () => {
     onLogout()
     token.value = null
     uid.value = null
-
     router.push('/auth/login')
 
   })

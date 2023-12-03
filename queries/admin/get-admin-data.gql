@@ -18,7 +18,7 @@ query MyQuery {
       created_at
     }
   }
-  attendances(order_by: { created_at: asc }) {
+  attendance(order_by: { created_at: asc }) {
     id
     date
     shift

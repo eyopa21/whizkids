@@ -44,7 +44,8 @@
 <script setup>
 import { useForm } from "vee-validate";
 import login_query from '../queries/admin/login.gql'
-import query from '../../queries/users/get-users.gql'
+import admin_query from '../queries/admin/get-admin-data.gql'
+
 const { onLogin, onLogout } = useApollo()
 const router = useRouter()
 
@@ -63,21 +64,26 @@ const login = handleSubmit(async (formValues) => {
     loadin.value = true
     Loginn({ email: formValues.email, password: formValues.password })
     onDone(async res => {
-        console.log(res.data.Login.id)
-        await onLogin(res.data.Login.token)
-        uid.value = res.data.Login.id
-        token.value = res.data.Login.token
-        const { data, error } = await useLazyAsyncQuery(query, { id: res.data.Login.id })
+        console.log(res.data.AdminLogin.token)
+        await onLogin(res.data.AdminLogin.token)
+        uid.value = res.data.AdminLogin.id
+        token.value = res.data.AdminLogin.token
+        const { data, error } = await useLazyAsyncQuery(admin_query, { fetchPolicy: 'no-cache' })
         if (error.value) {
             console.log("erororor", error.value)
             layout.value.showAlert = { error: true, message: error.value }
             onLogout()
             uid.value = null;
             token.value = null;
+            loadin.value = false;
         } else {
-
             loadin.value = false
-            mainData.value.user = data.value.users_by_pk
+            mainData.value.employees = computed(() => {
+                return data.value.users;
+            })
+            mainData.value.attendances = computed(() => {
+                return data.value.attendance;
+            })
             layout.value.showAlert = { error: false, message: 'Login success' }
             reloadNuxtApp({
                 path: "/",
@@ -90,12 +96,12 @@ const login = handleSubmit(async (formValues) => {
     })
     onError(err => {
         console.log("eroror", err)
-
         onLogout()
         token.value = null
         uid.value = null
 
         layout.value.showAlert = { error: true, message: err.message }
+        loadin.value = false;
     })
 })
 

@@ -16,8 +16,5 @@ console.log("to", to)
 
         return navigateTo("/auth/login");
     }
-    if (from.name === 'auth-verify' && !is_verified) {
-        return navigateTo("/auth/verify");
-    }
-
+    
 });

@@ -107,7 +107,7 @@
 <script setup>
 import delete_query from '../queries/employee/delete-employees.gql'
 const mainData = useData()
-const employees = mainData.value.employees;
+const employees = ref(mainData.value.employees);
 const layout = useLayout();
 const employeeToBeEdited = ref('');
 const select = useSelect()
