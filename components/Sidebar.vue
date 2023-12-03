@@ -84,6 +84,12 @@ const navs = ref([{
     icon: 'heroicons:code-bracket-20-solid'
 },
 
+{
+    name: 'Attendances',
+    to: '/attendances',
+    icon: 'heroicons:code-bracket-20-solid'
+},
+
 
 ])
 </script>

@@ -38,7 +38,8 @@
 
                 <div class="flex items-center w-full sm:justify-end">
 
-                    <VueButton variation="normal" @click="showAddModal()" name="Add Employees" type="button" icon="plus" />
+                    <VueButton variation="normal" @click="showAddModal()"
+                        :name="route.name == 'employee' ? 'Add Employees' : 'Add Attendance'" type="button" icon="plus" />
                 </div>
             </div>
         </div>

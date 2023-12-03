@@ -2,7 +2,7 @@
     <div class="flex -mt-24 flex-col justify-center items-center px-6 mx-auto  p-52 max-h-screen xl:px-0">
         <div class="text-center xl:max-w-4xl">
             <h1 class="mb-8 text-2xl font-bold leading-tight text-gray-900 dark:text-gray-200 sm:text-4xl lg:text-5xl">
-                No {{ $route.name.slice(0, -5) }} found
+                No {{ $route.name }} found
 
             </h1>
 

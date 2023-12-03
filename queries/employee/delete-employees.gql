@@ -1,0 +1,6 @@
+
+mutation ($id: [uuid!]) {
+  delete_users(where: { id: { _in: $id } }) {
+    affected_rows
+  }
+}
