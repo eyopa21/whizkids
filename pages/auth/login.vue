@@ -47,7 +47,7 @@ import login_query from '../queries/auth.gql'
 import query from '../../queries/users/get-users.gql'
 const { onLogin, onLogout } = useApollo()
 const router = useRouter()
-const auth = useAuth();
+
 const uid = useCookie('uid');
 const token = useCookie('token');
 const mainData = useData()

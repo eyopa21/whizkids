@@ -57,7 +57,7 @@
                                             </td>
                                             <td class="p-4 text-sm font-normal text-gray-500  whitespace-nowrap lg:p-5">
                                                 <div class="text-base font-semibold text-gray-900 dark:text-gray-400">{{
-                                                    employee.name
+                                                    employee.full_name
                                                 }}</div>
                                                 <div class="text-sm font-normal text-gray-500 dark:text-gray-600">{{
                                                     employee.sex }}
@@ -74,9 +74,9 @@
 
                                             <td class="flex justify-end p-4 space-x-2 whitespace-nowrap lg:p-5 ">
 
-                                                <!--VueButton
-                                                    @click=" layout.showemployeeModal = true; employeeToBeEdited = employee"
-                                                    name="Edit Item" type="button" variation="edit" /-->
+                                                <VueButton
+                                                    @click=" layout.showEmployeeModal = true; employeeToBeEdited = employee"
+                                                    name="Edit Item" type="button" variation="edit" />
 
                                                 <VueButton
                                                     @click="selected.length = 0; selected.push(employee.id); layout.showDeleteAlert = true"
@@ -96,8 +96,9 @@
 
 
             </div>
-            <VuePagination :amount="parseInt(employees?.length)" @paginate="(n) => { paginate(n) }" />
-            <VueModal v-if="layout.showEmployeeModal" @close="layout.showEmployeeModal = false" />
+            <!--VuePagination :amount="parseInt(employees?.length)" @paginate="(n) => { paginate(n) }" /-->
+            <VueModal v-if="layout.showEmployeeModal" :employee="employeeToBeEdited"
+                @close="layout.showEmployeeModal = false; employeeToBeEdited = ''" />
 
         </ClientOnly>
     </div>
@@ -106,53 +107,9 @@
 <script setup>
 
 const mainData = useData()
-const employees = ref([{
-    id: 1,
-    name: 'Eyob nigussie',
-    age: 22,
-    sex: 'male',
-    date_of_entry: '12/33/44',
-    salary: 2000,
-    role: 'Writer'
-},
-{
-    id: 2,
-    name: 'Eyob nigussie',
-    age: 22,
-    sex: 'male',
-    date_of_entry: '12/33/44',
-    salary: 2000,
-    role: 'Writer'
-},
-{
-    id: 3,
-    name: 'Eyob nigussie',
-    age: 22,
-    sex: 'male',
-    date_of_entry: '12/33/44',
-    salary: 2000,
-    role: 'Writer'
-},
-{
-    id: 4,
-    name: 'Eyob nigussie',
-    age: 22,
-    sex: 'male',
-    date_of_entry: '12/33/44',
-    salary: 2000,
-    role: 'Writer'
-},
-{
-    id: 5,
-    name: 'Eyob nigussie',
-    age: 22,
-    sex: 'male',
-    date_of_entry: '12/33/44',
-    salary: 2000,
-    role: 'Writer'
-}])
+const employees = mainData.value.employees;
 const layout = useLayout();
-const employeesToBeEdited = ref('');
+const employeeToBeEdited = ref('');
 const select = useSelect()
 const selected = ref(select.selected);
 const checkBox = ref('')

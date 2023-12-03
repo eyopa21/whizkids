@@ -1,0 +1,14 @@
+query MyQuery {
+  users(order_by: { full_name: asc }) {
+    id
+    user_name
+    full_name
+    sex
+    email
+    role
+    salary
+    date_of_entry
+    created_at
+    updated_at
+  }
+}

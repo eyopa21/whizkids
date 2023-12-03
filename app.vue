@@ -7,7 +7,7 @@
       <!-- here -->
 
 
-      <div v-if="loadin || loading">
+      <div v-if="loading">
         <VueMainLoading />
       </div>
       <NuxtPage v-else />
@@ -26,28 +26,36 @@
 
 
 <script setup>
-import query from './queries/users/get-users.gql'
-import guest_query from './queries/get-current-guest.gql'
+import employee_query from './queries/employee/get-employees.gql'
 import useLayout from './composables/useLayout';
 const { clients, getToken, onLogin, onLogout } = useApollo()
 const route = useRoute()
-
+const nuxtApp = useNuxtApp();
 const layout = useLayout();
+const mainData = useData();
+const height = 10;
+nuxtApp.provide('reFetch', () => {
+  console.log("refteching")
+  refetch()
+  layout.value.showDeleteAlert = false
+  layout.value.showEmployeeModal = false
 
-const queryy = gql`
-query getUsers($limit: Int!) {
-  users(limit: $limit) {
-    id
-  }
-}`
+})
 
-const { data } = await useAsyncQuery(queryy, { limit: 2 })
+const { data } = await useAsyncQuery(employee_query)
+const { load, result, loading, refetch } = useLazyQuery(employee_query, { fetchPolicy: 'no-cache' })
+await load();
 
-if (data.value?.users) {
-  // log response
-  console.log(data.value.users)
+console.log("res", result.value)
+if (result.value) {
+
+  mainData.value.employees = computed(() => {
+    return result.value.users;
+  })
 }
-
+else {
+  layout.value.showAlert = { error: true, message: 'Cannot fetch, Please check your connection and try again' }
+}
 
 </script>
 

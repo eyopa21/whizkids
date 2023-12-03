@@ -3,7 +3,7 @@ export default function() {
 
 
         return {
-            name: '',
+            employees: '',
             user: '',
             currentGuest: '',
             messages: [{

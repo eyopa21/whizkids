@@ -1,6 +1,6 @@
 <template>
-    <div :class="layout.showSideBar ? 'flex-row p-4 space-x-4' : 'hidden lg:block flex-col p-4'"
-        class=" relative bottom-0 left-0 justify-center  w-full lg:flex bg-gray-100 dark:bg-gray-800"
+    <div :class="layout.showSideBar ? 'flex-row p-4 space-x-4' : 'hidden lg:block flex-col p-4 pr-0'"
+        class=" relative bottom-0 left-0 justify-center  w-full lg:flex bg-gray-100 dark:bg-gray-900"
         sidebar-bottom-menu="">
 
         <a @click="logout()"
@@ -18,7 +18,7 @@
 
 <script setup>
 const layout = useLayout();
-const auth = useAuth()
+
 const router = useRouter();
 const token = useCookie('token')
 const uid = useCookie('uid')

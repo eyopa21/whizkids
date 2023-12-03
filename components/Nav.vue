@@ -30,7 +30,7 @@
             <div class="text-md font-semibold flex items-center lg:mr-1.5">
 
               <div class="ml-3 relative  block">
-                <div>
+                <!--div>
                   <button @click="navButtons.showSettings = !navButtons.showSettings; navButtons.showNotification = false"
                     type="button" class=" flex text-sm  rounded-full focus:ring-4 focus:ring-gray-300">
 
@@ -39,7 +39,7 @@
                       :src="mainData.user?.logo?.split('upload')[1] ? mainData.user?.logo?.split('upload')[1] : '/'"
                       placeholder class="mr-2 h-8 w-12 rounded-full ring-gray-300" alt="logo" />
                   </button>
-                </div>
+                </div-->
                 <div v-if="mainData.currentGuest" :class="navButtons.showSettings ? 'visible h-56' : 'invisible h-0'"
                   class="transition-all duration-300 absolute z-50 my-4 text-base list-none bg-white dark:bg-gray-900 rounded divide-y divide-gray-100 shadow-lg dark:shadow-md shadow-gray-300 dark:shadow-gray-600">
                   <div class="py-3 px-4" role="none">
@@ -120,7 +120,7 @@ const {
 } = useI18n()
 const mainData = useData()
 const layout = useLayout();
-const auth = useAuth()
+
 const router = useRouter();
 const token = useCookie('token')
 const uid = useCookie('uid')

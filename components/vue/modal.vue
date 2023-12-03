@@ -34,7 +34,7 @@
 
           <div class="p-6 space-y-6">
 
-            <FormsEmployeeForm />
+            <FormsEmployeeForm :employee="props.employee" />
 
 
 
@@ -54,5 +54,5 @@
 
 const route = useData().value;
 const emit = defineEmits(['close'])
-
+const props = defineProps(['employee'])
 </script>
