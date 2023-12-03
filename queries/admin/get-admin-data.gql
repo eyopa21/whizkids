@@ -1,15 +1,15 @@
-query myQuery($id: uuid!){
-  users_by_pk(id: $id) {
+query MyQuery {
+  users(order_by: { full_name: asc }) {
     id
     user_name
     full_name
     sex
+    email
     role
     salary
-    email
     date_of_entry
     created_at
-    phone_number
+    updated_at
     attendances(order_by: { created_at: asc }) {
       id
       date
@@ -17,5 +17,12 @@ query myQuery($id: uuid!){
       time
       created_at
     }
+  }
+  attendances(order_by: { created_at: asc }) {
+    id
+    date
+    shift
+    time
+    created_at
   }
 }

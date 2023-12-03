@@ -1,5 +1,0 @@
-mutation ($base64: String!) {
-  UploadImage(base64: $base64) {
-    url
-  }
-}

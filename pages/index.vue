@@ -7,8 +7,8 @@
       </div>
       <div class="grid grid-cols-0 gap-6 mb-6 w-full xl:grid-cols-1 2xl:grid-cols-3">
 
-        <DashboardMessages />
-        <DashboardLogs />
+        <!--DashboardMessages /-->
+        <!--DashboardLogs /-->
       </div>
       <!--div class="grid grid-cols-1 gap-6 mb-6 w-full xl:grid-cols-2">
         <DashboardMap />

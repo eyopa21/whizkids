@@ -5,12 +5,11 @@ console.log("to", to)
     
    
     const token = useCookie('token')
-    const name = useRoute();
-    const mainData = useData()
+   
         
   
 
-    if ((to.name === 'auth-login') && token.value) {
+    if ((to.name === 'auth-login' || to.name==='auth-admin-login') && token.value) {
         return navigateTo('/');
     }
     if ((to.name === 'index' || to.name === 'main'  ) && !token.value) {

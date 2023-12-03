@@ -26,7 +26,7 @@
 
 
 <script setup>
-import employee_query from './queries/employee/get-employees.gql'
+import admin_query from './queries/admin/get-admin-data.gql'
 import current_employee_query from './queries/employee/get-current-employee.gql'
 import useLayout from './composables/useLayout';
 const { clients, getToken, onLogin, onLogout } = useApollo()
@@ -37,6 +37,7 @@ const layout = useLayout();
 const mainData = useData();
 const height = 10;
 const uid = useCookie('uid');
+const token = useCookie('token');
 nuxtApp.provide('reFetch', () => {
   console.log("refteching")
   refetch()
@@ -45,27 +46,66 @@ nuxtApp.provide('reFetch', () => {
 
 })
 
-const { data } = await useAsyncQuery(employee_query)
-const { load, result, loading, refetch } = useLazyQuery(current_employee_query, { id: uid.value }, { fetchPolicy: 'no-cache' })
-try {
-  if (uid.value) {
+//const { data } = await useAsyncQuery(employee_query)
+const { load, result, loading, refetch } = useLazyQuery(current_employee_query, { id: uid.value ? uid.value : null })
+setTimeout(async () => {
+  try {
     await load();
+    console.log("res", result.value)
+    if (result.value) {
+      mainData.value.user = computed(() => {
+        return result.value.users_by_pk;
+      })
+    }
+    else {
+      layout.value.showAlert = { error: true, message: 'Cannot fetch, Please check your connection and try again' }
+    }
+  } catch (error) {
+    console.log("eroror", error)
   }
 
-  console.log("res", result.value)
-  if (result.value) {
 
-    mainData.value.user = computed(() => {
-      return result.value.users_by_pk;
-    })
 
-  }
-  else {
-    layout.value.showAlert = { error: true, message: 'Cannot fetch, Please check your connection and try again' }
-  }
-} catch (error) {
-  console.log("eroror", error)
-}
+  getToken().then(async (res) => {
+    console.log(res)
+    token.value = res;
+    if (res) {
+      const claims = await JSON.parse(atob(res.split(".")[1]));
+      uid.value = claims.user_id ? claims.user_id : claims.uid;
+      const { data, error } = await useLazyAsyncQuery(admin_query)
+      if (error.value) {
+        console.log(error.value)
+        layout.value.showAlert = { error: true, message: error }
+      } else {
+        console.log(data.value)
+
+        mainData.value.employees = computed(() => {
+          return result.value.employees;
+        })
+        mainData.value.attendances = computed(() => {
+          return result.value.attendances;
+        })
+      }
+    } else {
+      console.log("no token")
+      onLogout()
+      token.value = null
+      uid.value = null
+      router.push('/auth/login')
+    }
+
+
+  }).catch(err => {
+    console.log("auth err", err)
+    onLogout()
+    token.value = null
+    uid.value = null
+
+    router.push('/auth/login')
+
+  })
+}, 0)
+
 
 
 </script>
