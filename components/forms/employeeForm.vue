@@ -60,7 +60,7 @@ const { mutate: Register, onDone, onError, laoding } = useMutation(register_empl
 const submit = handleSubmit((formValues) => {
     console.log(formValues);
 
-    Register()
+    Register({ user_name: formValues.user_name, full_name: formValues.full_name, email: formValues.email, password: formValues.password, sex: formValues.sex, date_of_entry: formValues.date_of_entry, role: formValues.role, salary: formValues.salary })
 
 
     onDone(res => {

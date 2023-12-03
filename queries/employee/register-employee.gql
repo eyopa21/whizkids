@@ -4,7 +4,7 @@ mutation RegisterEmployee (
   $password: String!
   $full_name: String!
   $salary: Int!
-  $sex: enum_sex_enum!
+  $sex: InsertUsersOneDerivedEnumSexEnum!
   $date_of_entry: date!
   $role: String!
 ) {

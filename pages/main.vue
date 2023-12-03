@@ -30,17 +30,18 @@ const sign = () => {
             <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-6">
                 <div class="col-span-full mb-5 xl:mb-0">
 
-                    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">
+                    <h1 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
                         Profile
                     </h1>
                 </div>
 
                 <div class="col-span-full xl:col-auto">
-                    <div class="bg-white shadow-lg shadow-gray-200 rounded-2xl p-4 mb-6">
+                    <div
+                        class="bg-white  dark:bg-gray-900 shadow-lg dark:shadow-sm shadow-gray-200 dark:shadow-gray-700 rounded-2xl p-4 mb-6">
                         <div class="sm:flex xl:block sm:space-x-4 xl:space-x-0">
 
                             <div>
-                                <h2 class="text-xl font-bold">Abebe Kebede</h2>
+                                <h2 class="text-xl font-bold dark:text-white">Abebe Kebede</h2>
                                 <ul class="mt-2 space-y-1">
                                     <li class="flex items-center text-sm font-normal text-gray-500">
                                         <svg class="mr-2 w-4 h-4 text-gray-900" fill="currentColor" viewBox="0 0 20 20"
@@ -70,15 +71,14 @@ const sign = () => {
                             <div class="sm:flex-1">
                                 <address class="text-sm not-italic font-normal text-gray-500">
                                     <div class="mt-4">Email adress</div>
-                                    <a class="text-sm font-medium text-gray-900"
-                                        href="mailto:webmaster@flowbite.com">yourname@flowbite.com</a>
+                                    <a class="text-sm font-medium text-gray-900 dark:text-white">yourname@flowbite.com</a>
                                     <div class="mt-4">Home adress</div>
-                                    <div class="mb-2 text-sm font-medium text-gray-900">
+                                    <div class="mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Gerji mebrat hayl,
                                         <br>Addis Ababa
                                     </div>
                                     <div class="mt-4">Phone number</div>
-                                    <div class="mb-2 text-sm font-medium text-gray-900">
+                                    <div class="mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         +251918784596
                                     </div>
                                 </address>
@@ -97,12 +97,13 @@ const sign = () => {
 
                 </div>
                 <div class="col-span-2">
-                    <div class="bg-white shadow-lg shadow-gray-200 rounded-2xl p-4 mb-6">
-                        <h3 class="mb-4 text-xl font-bold">General information</h3>
+                    <div
+                        class="bg-white dark:bg-gray-900 shadow-lg dark:shadow-sm shadow-gray-200 dark:shadow-gray-700 rounded-2xl p-4 mb-6">
+                        <h3 class="mb-4 text-xl font-bold dark:text-white">General information</h3>
                         <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                             <div class="sm:col-span-2">
-                                <dt class="text-lg font-medium text-gray-900">About me</dt>
-                                <dd class="mt-1 space-y-3 max-w-prose text-sm text-gray-500">
+                                <dt class="text-lg font-medium text-gray-900 dark:text-gray-200">About me</dt>
+                                <dd class="mt-1 space-y-3 max-w-prose text-sm text-gray-500 dark:text-gray-400">
                                     <p>
                                         Dedicated, passionate, and accomplished Full Stack
                                         Developer with 9+ years of progressive experience
@@ -120,56 +121,56 @@ const sign = () => {
                                 </dd>
                             </div>
                             <div>
-                                <dt class="text-sm font-medium text-gray-500">Education</dt>
-                                <dd class="text-sm font-semibold text-gray-900">
+                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Education</dt>
+                                <dd class="text-sm font-semibold text-gray-900 dark:text-white">
                                     Thomas Jeff High School, Stanford University
                                 </dd>
                             </div>
                             <div>
-                                <dt class="text-sm font-medium text-gray-500">
+                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
                                     Work History
                                 </dt>
-                                <dd class="text-sm font-semibold text-gray-900">
+                                <dd class="text-sm font-semibold text-gray-900  dark:text-white">
                                     Twitch, Google, Apple
                                 </dd>
                             </div>
                             <div>
-                                <dt class="text-sm font-medium text-gray-500">Join Date</dt>
-                                <dd class="text-sm font-semibold text-gray-900">
+                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Join Date</dt>
+                                <dd class="text-sm font-semibold text-gray-900 dark:text-white">
                                     12-09-2021
                                 </dd>
                             </div>
                             <div>
-                                <dt class="text-sm font-medium text-gray-500">Languages</dt>
-                                <dd class="text-sm font-semibold text-gray-900">
+                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Languages</dt>
+                                <dd class="text-sm font-semibold text-gray-900 dark:text-white">
                                     English, German, Italian, Spanish
                                 </dd>
                             </div>
                             <div>
-                                <dt class="text-sm font-medium text-gray-500">
+                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
                                     Organization
                                 </dt>
-                                <dd class="text-sm font-semibold text-gray-900">
+                                <dd class="text-sm font-semibold text-gray-900 dark:text-white">
                                     Bergside Inc.
                                 </dd>
                             </div>
                             <div>
-                                <dt class="text-sm font-medium text-gray-500">Role</dt>
-                                <dd class="text-sm font-semibold text-gray-900">
+                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Role</dt>
+                                <dd class="text-sm font-semibold text-gray-900 dark:text-white">
                                     Graphic Designer
                                 </dd>
                             </div>
                             <div>
-                                <dt class="text-sm font-medium text-gray-500">
+                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
                                     Department
                                 </dt>
-                                <dd class="text-sm font-semibold text-gray-900">
+                                <dd class="text-sm font-semibold text-gray-900 dark:text-white">
                                     Marketing
                                 </dd>
                             </div>
                             <div>
-                                <dt class="text-sm font-medium text-gray-500">Birthday</dt>
-                                <dd class="text-sm font-semibold text-gray-900">
+                                <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Birthday</dt>
+                                <dd class="text-sm font-semibold text-gray-900 dark:text-white">
                                     15-08-1990
                                 </dd>
                             </div>
