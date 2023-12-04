@@ -78,7 +78,7 @@
                                                 <VueAttendButton :id="employee.id" />
                                                 <VueButton
                                                     @click=" layout.showEmployeeModal = true; employeeToBeEdited = employee"
-                                                    name="Edit Item" type="button" variation="edit" />
+                                                    name="Edit Employee" type="button" variation="edit" />
 
                                                 <VueButton
                                                     @click="selected.length = 0; selected.push(employee.id); layout.showDeleteAlert = true"

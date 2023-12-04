@@ -28,9 +28,10 @@
 </template>
 
 <script setup>
+import Search_query from '../queries/attendances/search.gql'
 const mainData = useData();
 const layout = useLayout();
-const attendances = computed(() => {
+let attendances = computed(() => {
     return mainData.value.attendances;
 })
 
@@ -39,6 +40,20 @@ const uid = useCookie('uid')
 
 
 
+
+const search = async (searchValue) => {
+    console.log("val", searchValue)
+    const { onResult, onError, refetch, loading } = useQuery(Search_query, { search: "%" + searchValue + "%" }, { fetchPolicy: 'cache-and-network', })
+    onResult(res => {
+        console.log("search", res)
+        attendances = res.data?.attendance
+
+    })
+    onError(err => {
+        console.log(err)
+        layout.value.showAlert = { error: true, message: 'Searching failed' }
+    })
+}
 
 
 </script>
