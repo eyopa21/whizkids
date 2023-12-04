@@ -1,0 +1,22 @@
+query myQuery($sort: [users_order_by!]) {
+  users(order_by: $sort) {
+    id
+    user_name
+    full_name
+    sex
+    email
+    role
+    salary
+    date_of_entry
+    created_at
+    updated_at
+    phone_number
+    attendances(order_by: { created_at: asc }) {
+      id
+      date
+      shift
+      time
+      created_at
+    }
+  }
+}

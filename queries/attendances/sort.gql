@@ -1,0 +1,12 @@
+query myQuery($sort: [attendance_order_by!]) {
+  attendance(order_by: $sort) {
+    id
+    date
+    shift
+    time
+    created_at
+    user {
+      full_name
+    }
+  }
+}

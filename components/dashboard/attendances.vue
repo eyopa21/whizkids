@@ -6,6 +6,10 @@
       <div>
         <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-gray-100">Attendances</h3>
 
+
+      </div>
+      <div scope="col" class="p-4 lg:p-5 flex justify-end">
+        <VueSort :sortBy="['Name', 'Date']" @sort="(n) => (mainData.attendances = computed(() => { return n }))" />
       </div>
 
     </div>

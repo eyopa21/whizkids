@@ -41,12 +41,13 @@
                                             </th>
 
                                             <th scope="col" class="p-4 lg:p-5 flex justify-end">
-                                                <VueSort />
+                                                <VueSort :sortBy="['Entry Date', 'Name', 'Salary']"
+                                                    @sort="(n) => (mainData.employees = computed(() => { return n }))" />
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white  dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
-                                        <tr v-for="(employee, key) in employees" :key="employee"
+                                        <tr v-for="( employee, key ) in  mainData.employees " :key="employee"
                                             class="hover:bg-gray-100 dark:hover:bg-gray-800 ">
                                             <td class="p-4 w-4 lg:p-5">
                                                 <div class="flex items-center">
@@ -108,10 +109,9 @@
 
 <script setup>
 import delete_query from '../queries/employee/delete-employees.gql'
+import Search_query from '../queries/employee/search.gql'
 const mainData = useData()
-const employees = computed(() => {
-    return mainData.value.employees
-})
+
 const layout = useLayout();
 const employeeToBeEdited = ref('');
 const select = useSelect()
@@ -148,7 +148,20 @@ const deleteEmployee = async () => {
     }
 }
 
-const attend = (id) => {
-    console.log("attend", id)
+const search = async (searchValue) => {
+    console.log("val", searchValue)
+    const { onResult, onError, refetch, loading } = useQuery(Search_query, { search: "%" + searchValue + "%" }, { fetchPolicy: 'cache-and-network', })
+    onResult(res => {
+        console.log("search", res)
+        mainData.value.employees = computed(() => {
+            return res.data?.users
+        })
+
+    })
+    onError(err => {
+        console.log(err)
+        layout.value.showAlert = { error: true, message: 'Searching failed' }
+    })
 }
+
 </script>

@@ -1,0 +1,32 @@
+query search($search: String!) {
+  users(
+    where: {
+      _or: [
+        { full_name: { _ilike: $search } }
+        { phone_number: { _ilike: $search } }
+        { role: { _ilike: $search } }
+        { email: { _ilike: $search } }
+        { user_name: { _ilike: $search } }
+      ]
+    }
+  ) {
+    id
+    user_name
+    full_name
+    sex
+    email
+    role
+    salary
+    date_of_entry
+    created_at
+    updated_at
+    phone_number
+    attendances(order_by: { created_at: asc }) {
+      id
+      date
+      shift
+      time
+      created_at
+    }
+  }
+}
