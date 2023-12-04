@@ -7,7 +7,7 @@
       <!-- here -->
 
 
-      <div v-if="loading">
+      <div v-if="loading || adminLoading">
         <VueMainLoading />
       </div>
       <NuxtPage v-else />
@@ -38,73 +38,62 @@ const mainData = useData();
 const height = 10;
 const uid = useCookie('uid');
 const token = useCookie('token');
+const ROLE = useCookie('ROLE')
 nuxtApp.provide('reFetch', () => {
   console.log("refteching")
-  refetch()
+  if (ROLE.value === 'admin') {
+    adminRefetch()
+  } if (ROLE.value === 'employee') {
+    refetch()
+  }
   layout.value.showDeleteAlert = false
   layout.value.showEmployeeModal = false
 
 })
 
-//const { data } = await useAsyncQuery(employee_query)
+const { load: adminLoad, result: adminResult, loading: adminLoading, refetch: adminRefetch } = useLazyQuery(admin_query)
 const { load, result, loading, refetch } = useLazyQuery(current_employee_query, { id: uid.value ? uid.value : null }, { fetchPolicy: 'no-cache' })
 setTimeout(async () => {
-  try {
-    await load();
-    console.log("res", result.value)
-    if (result.value) {
-      mainData.value.user = computed(() => {
-        return result.value.users_by_pk;
-      })
+  if (ROLE.value === 'employee') {
+    try {
+      await load();
+      console.log("res", result.value)
+      if (result.value) {
+        mainData.value.user = computed(() => {
+          return result.value.users_by_pk;
+        })
+      }
+      else {
+        layout.value.showAlert = { error: true, message: 'Cannot fetch, Please check your connection and try again' }
+      }
+    } catch (error) {
+      console.log("eroror", error)
+      layout.value.showAlert = { error: true, message: error }
     }
-    else {
-      layout.value.showAlert = { error: true, message: 'Cannot fetch, Please check your connection and try again' }
-    }
-  } catch (error) {
-    console.log("eroror", error)
   }
+  else if (ROLE.value === 'admin') {
+    console.log("mainfetch")
+    try {
+      await adminLoad();
+      console.log("res", adminResult.value)
+      if (adminResult.value) {
 
-
-
-  getToken().then(async (res) => {
-    console.log(res)
-    token.value = res;
-    if (res) {
-      const claims = await JSON.parse(atob(res.split(".")[1]));
-      uid.value = claims.user_id ? claims.user_id : claims.uid;
-      const { data, error } = await useLazyAsyncQuery(admin_query)
-      if (error.value) {
-        console.log(error.value)
-        layout.value.showAlert = { error: true, message: error }
-      } else {
-        console.log("main", data.value)
         mainData.value.employees = computed(() => {
-          return data.value.users;
+          return adminResult.value.users;
         })
         mainData.value.attendances = computed(() => {
-          return data.value.attendance;
+          return adminResult.value.attendance;
         })
       }
-    } else {
-      console.log("no token")
-      onLogout()
-      token.value = null
-      uid.value = null
-      if (route.name !== 'auth-admin-login') {
-
-        router.push('/auth/login')
+      else {
+        layout.value.showAlert = { error: true, message: 'Cannot fetch, Please check your connection and try again' }
       }
+    } catch (error) {
+      console.log("eroror", error)
+      layout.value.showAlert = { error: true, message: error }
     }
 
-
-  }).catch(err => {
-    console.log("auth err", err)
-    onLogout()
-    token.value = null
-    uid.value = null
-    router.push('/auth/login')
-
-  })
+  }
 }, 0)
 
 

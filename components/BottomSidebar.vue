@@ -22,13 +22,16 @@ const layout = useLayout();
 const router = useRouter();
 const token = useCookie('token')
 const uid = useCookie('uid')
+const ROLE = useCookie('ROLE')
 
 const { onLogout } = useApollo()
 const logout = () => {
     onLogout();
     // router.push('/auth/login')
-    token.value = null
-    uid.value = null
+    token.value = null;
+    uid.value = null;
+    ROLE.value = null;
+
     reloadNuxtApp({
         path: "/auth/login",
         ttl: 1000, // default 10000

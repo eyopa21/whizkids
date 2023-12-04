@@ -10,6 +10,7 @@ query MyQuery {
     date_of_entry
     created_at
     updated_at
+    phone_number
     attendances(order_by: { created_at: asc }) {
       id
       date
@@ -24,5 +25,8 @@ query MyQuery {
     shift
     time
     created_at
+    user {
+      full_name
+    }
   }
 }

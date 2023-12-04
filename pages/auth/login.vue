@@ -47,6 +47,7 @@ const router = useRouter()
 
 const uid = useCookie('uid');
 const token = useCookie('token');
+const ROLE = useCookie('ROLE');
 const mainData = useData()
 const layout = useLayout()
 
@@ -65,24 +66,22 @@ const login = handleSubmit(async (formValues) => {
         await onLogin(res.data.Login.token)
         uid.value = res.data.Login.id
         token.value = res.data.Login.token
+        ROLE.value = 'employee'
         router.push('/')
         const { data, error } = await useLazyAsyncQuery(current_employee_query, { id: res.data.Login.id })
         if (error.value) {
             layout.value.showAlert = { error: true, message: error.value }
-            //onLogout()
-            //uid.value = null;
-            //token.value = null;
+            onLogout()
+            uid.value = null;
+            token.value = null;
+            ROLE.value = null;
         } else {
-
-
             mainData.value.user = data.value.users_by_pk
             layout.value.showAlert = { error: false, message: 'Login success' }
             reloadNuxtApp({
                 path: "/",
                 ttl: 1000,
             });
-
-
         }
     })
     onError(err => {

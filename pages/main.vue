@@ -1,27 +1,15 @@
 
 <script setup>
-const layout = useLayout();
-const query = gql`
-mutation {
-  Attend(employee_id: "854f2d15-be7c-429e-b190-014660d8d65a") {
-    id
-  }
-}
-`
-const mainData = useData();
-const { mutate: attend, onDone, onError, loading } = useMutation(query)
 
-const sign = () => {
-    attend();
-    onDone(res => {
-        console.log(res)
-        layout.value.showAlert = { error: false, message: 'You signed successfully' }
-    })
-    onError(err => {
-        console.log(err)
-        layout.value.showAlert = { error: true, message: err.message }
-    })
-}
+
+const layout = useLayout();
+const uid = useCookie('uid')
+
+const mainData = useData();
+const attendances = computed(() => {
+    return mainData.value.attendances;
+})
+
 </script>
 <template>
     <div>
@@ -84,15 +72,11 @@ const sign = () => {
                                     </div>
                                 </address>
                             </div>
-                            <div class="flex justify-end">
-                                <button @click="sign()" type="button"
-                                    class="bg-red-500 hover:bg-red-700 py-2 px-8 rounded-xl text-white">
-                                    <span v-if="!loading">Sign</span>
-                                    <span v-else>Signing...</span>
-                                </button>
-                            </div>
-                        </div>
 
+                        </div>
+                        <div class="flex justify-end">
+                            <VueAttendButton :id="uid" />
+                        </div>
                     </div>
 
 
@@ -100,7 +84,7 @@ const sign = () => {
 
 
             </div>
-            <DashboardAttendances />
+            <DashboardAttendances :attendances="mainData.user.attendances" />
         </main>
 
     </div>

@@ -3,9 +3,11 @@
         <ClientOnly>
             <Search @search="(n) => (search(n))" :showDelete="selected.length ? true : false"
                 @delete="layout.showDeleteAlert = true" :items="selected.length" />
+
             <div v-if="employees?.length == 0">
                 <NoDataFound />
             </div>
+
             <div v-else>
 
 
@@ -73,7 +75,7 @@
                                             </td>
 
                                             <td class="flex justify-end p-4 space-x-2 whitespace-nowrap lg:p-5 ">
-
+                                                <VueAttendButton :id="employee.id" />
                                                 <VueButton
                                                     @click=" layout.showEmployeeModal = true; employeeToBeEdited = employee"
                                                     name="Edit Item" type="button" variation="edit" />
@@ -107,7 +109,9 @@
 <script setup>
 import delete_query from '../queries/employee/delete-employees.gql'
 const mainData = useData()
-const employees = ref(mainData.value.employees);
+const employees = computed(() => {
+    return mainData.value.employees
+})
 const layout = useLayout();
 const employeeToBeEdited = ref('');
 const select = useSelect()
@@ -142,5 +146,9 @@ const deleteEmployee = async () => {
     } else {
         layout.value.showAlert = { error: false, message: 'Nothing to delete' }
     }
+}
+
+const attend = (id) => {
+    console.log("attend", id)
 }
 </script>

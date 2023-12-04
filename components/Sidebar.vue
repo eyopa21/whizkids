@@ -29,6 +29,7 @@
 
 
                             <NuxtLink :to="i.to"
+                                v-if="(i.name === 'Main' && ROLE === 'employee') || ((i.name === 'Attendances' || i.name === 'Dashboard' || i.name === 'Employees') && ROLE === 'admin')"
                                 class="flex items-center py-2.5 px-3 text-base font-normal text-dark-500 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 group  transition-all duration-200"
                                 exact-active-class="bg-gray-200 dark:bg-gray-700">
                                 <div
@@ -61,6 +62,7 @@
 </template>
 
 <script setup>
+const ROLE = useCookie('ROLE')
 const shrink = ref(false)
 const layout = useLayout();
 const localePath = useLocalePath()
@@ -74,20 +76,20 @@ const navs = ref([{
 {
     name: 'Employees',
     to: '/employees',
-    icon: 'raphael:anonymous'
+    icon: 'i-heroicons-user-group-20-solid'
 },
 
 
 {
     name: 'Main',
     to: '/main',
-    icon: 'heroicons:code-bracket-20-solid'
+    icon: 'raphael:anonymous'
 },
 
 {
     name: 'Attendances',
     to: '/attendances',
-    icon: 'heroicons:code-bracket-20-solid'
+    icon: 'i-heroicons-book-open-20-solid'
 },
 
 

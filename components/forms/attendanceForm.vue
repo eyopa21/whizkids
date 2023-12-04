@@ -35,8 +35,8 @@
                         :value="props.employee ? props.employee.salary : ''" />
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                    <VueInput label="Phone number" name="phone_number" type="text" placeholder="0911223344" rule="required"
-                        :value="props.employee ? props.employee.phone_number : ''" />
+                    <VueInput label="Phone number" name="phone_number" type="text" placeholder="0911223344"
+                        rule="required" />
                 </div>
 
 
@@ -57,7 +57,7 @@
 import register_employee_query from '../queries/employee/register-employee.gql'
 import update_employee_query from '../queries/employee/update-employee.gql'
 import { useForm } from "vee-validate";
-const props = defineProps(['employee'])
+
 const layout = useLayout();
 
 const uid = useCookie('uid')

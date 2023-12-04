@@ -16,6 +16,9 @@ query myQuery($id: uuid!){
       shift
       time
       created_at
+      user {
+      full_name
+    }
     }
   }
 }

@@ -1,0 +1,5 @@
+mutation attend($id: uuid!) {
+  Attend(employee_id: $id) {
+    id
+  }
+}

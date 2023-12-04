@@ -51,6 +51,7 @@ const router = useRouter()
 
 const uid = useCookie('uid');
 const token = useCookie('token');
+const ROLE = useCookie('ROLE');
 const mainData = useData()
 const layout = useLayout()
 
@@ -68,13 +69,15 @@ const login = handleSubmit(async (formValues) => {
         await onLogin(res.data.AdminLogin.token)
         uid.value = res.data.AdminLogin.id
         token.value = res.data.AdminLogin.token
-        const { data, error } = await useLazyAsyncQuery(admin_query, { fetchPolicy: 'no-cache' })
+        ROLE.value = 'admin'
+        const { data, error } = await useLazyAsyncQuery(admin_query)
         if (error.value) {
             console.log("erororor", error.value)
             layout.value.showAlert = { error: true, message: error.value }
             onLogout()
             uid.value = null;
             token.value = null;
+            ROLE.value = null;
             loadin.value = false;
         } else {
             loadin.value = false

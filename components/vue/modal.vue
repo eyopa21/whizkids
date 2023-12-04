@@ -3,11 +3,10 @@
 
     <div
       class="flex animate-top top-12  overflow-y-auto overflow-x-hidden fixed right-0 left-0  z-50 justify-center items-center md:inset-0 h-modal sm:h-full">
-      <div :class="route.name == 'blogs' ? 'md:mt-72 lg:mb-4 max-w-4xl' : 'max-w-2xl'"
-        class="relative px-4 w-full  h-full md:h-auto ">
+      <div class="relative px-4 w-full  h-full md:h-auto  md:mt-32 lg:mb-4 max-w-2xl">
 
-        <div :class="route.name == 'projects' ? 'xl:mt-52' : ''"
-          class="relative  mb-2 bg-white dark:bg-gray-900 rounded-2xl shadow-xl dark:shadow-sm shadow-gray-700 dark:shadow-fuchsia-700">
+        <div class=" relative mb-2 bg-white dark:bg-gray-900 rounded-2xl shadow-xl dark:shadow-sm shadow-gray-700
+        dark:shadow-fuchsia-700">
 
           <div class="flex justify-between items-start p-5 rounded-t border-b">
             <h3 class="text-xl font-semibold dark:text-white">

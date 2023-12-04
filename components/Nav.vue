@@ -76,8 +76,8 @@
               }}
                 <span class="animate-pulse duration-1000 delay-1000 uppercase text-green-700">
 
-                  <span v-if="mainData.currentGuest">(Guest)</span>
-                  <span v-else>(user)</span>
+                  <span v-if="ROLE === 'admin'">(ADMIN)</span>
+                  <span v-else>(EMPLOYEE)</span>
                 </span>
               </span>
 
@@ -113,6 +113,7 @@
 </template>
 
 <script setup>
+const ROLE = useCookie('ROLE')
 const {
   locale,
   availableLocales,
