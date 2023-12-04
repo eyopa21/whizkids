@@ -1,0 +1,20 @@
+
+query search($date: date!) {
+  attendance(where: { date: { _eq: $date } }) {
+    id
+    shift
+    date
+    time
+    created_at
+    user {
+      id
+      user_name
+      full_name
+      role
+      salary
+      sex
+      email
+      date_of_entry
+    }
+  }
+}
