@@ -1,12 +1,13 @@
 <template>
-    <div class="flex flex-col mt-32 md:mt-0 justify-center items-center px-6 pt-8 mx-auto md:h-screen">
+    <div
+        class="bg-[url('/tsehai.jpeg')] min-h-screen flex flex-col h-full mt-32 md:mt-0 justify-center items-center px-6 pt-8 mx-auto md:h-screen">
 
         <div class="fixed top-8 right-8">
 
             <VueDarkMode />
         </div>
         <div
-            class="p-10 w-full max-w-lg bg-white dark:bg-gray-900 rounded-2xl shadow-xl dark:shadow-md shadow-gray-300 dark:shadow-gray-600 ">
+            class="p-10 w-full max-w-lg backdrop-blur-3xl  rounded-2xl shadow-xl dark:shadow-md shadow-gray-300 dark:shadow-gray-600 ">
             <div class="space-y-8">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
                     Welcome to Whizkids
