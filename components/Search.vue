@@ -40,12 +40,11 @@
                     </div>
                 </div>
 
-                <div class="flex items-center  sm:justify-end">
+                <div class="flex items-center w-full sm:justify-end">
                     <div v-if="route.name === 'attendances'" class="flex mr-8 space-x-2">
 
                         <VueFilter />
                     </div>
-
                     <div v-if="route.name === 'employees'">
                         <VueButton variation="normal" @click="showAddModal()"
                             :name="route.name == 'employees' ? 'Add Employees' : 'Add Attendance'" type="button"
@@ -86,3 +85,4 @@ const showAddModal = () => {
 
 }
 </script>
+

@@ -1,12 +1,10 @@
-query myQuery($user_id: uuid!){
-  logs(where: {user_id: {_eq: $user_id}}) {
+query myQuery {
+  logs {
     id
-    user_id
-    email
+    role
+    method
     table
-    operation
     description
-    guest_id
     created_at
     updated_at
   }

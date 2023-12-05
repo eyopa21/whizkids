@@ -8,7 +8,7 @@
 
 
       </div>
-      <div scope="col" class="p-4 lg:p-5 flex justify-end">
+      <div v-if="ROLE === 'admin'" scope="col" class="p-4 lg:p-5 flex justify-end">
         <VueSort :sortBy="['Name', 'Date']" @sort="(n) => (mainData.attendances = computed(() => { return n }))" />
       </div>
 
@@ -80,6 +80,7 @@
 </template>
 
 <script setup>
+const ROLE = useCookie('ROLE')
 const props = defineProps(['attendances'])
 const mainData = useData();
 

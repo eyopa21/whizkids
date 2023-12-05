@@ -33,7 +33,7 @@ const route = useRoute();
 const layout = useLayout();
 const sort = (value) => {
 
-    const sortValue = value === 'Name' ? { "full_name": "desc" } : value === 'Salary' ? { "salary": "desc" } : value === 'Entry Date' ? { "date_of_entry": "desc" } : {};
+    const sortValue = value === 'Name' ? { "full_name": "asc" } : value === 'Salary' ? { "salary": "asc" } : value === 'Entry Date' ? { "date_of_entry": "desc" } : {};
     console.log(sortValue)
     if (route.name === 'employees') {
         const { onResult, onError } = useQuery(employee_sort_query, { sort: sortValue }, { fetchPolicy: 'no-cache', })

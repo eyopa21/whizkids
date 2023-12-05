@@ -6,9 +6,9 @@
 
         </a>
 
-        <select v-model="shift" @change="shiftFilter(shift)" id="settings-language" name="countries"
-            class="border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5">
-            <option value="morning">Morning</option>
+        <select v-model="shift" @change="shiftFilter(shift)"
+            class="border-gray-300 p-3 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full ">
+            <option value="morning" class="p-2 ">Morning</option>
             <option value="afternoon">Afternoon</option>
 
         </select>

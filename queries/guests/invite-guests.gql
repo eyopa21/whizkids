@@ -1,6 +1,0 @@
-mutation($user_id: uuid!, $email: String!,$user_name: String!, $is_super_guest: Boolean!) {
-  RegisterGuest(email: $email, user_id: $user_id, user_name: $user_name, is_super_guest: $is_super_guest) {
-    id
-    
-  }
-}

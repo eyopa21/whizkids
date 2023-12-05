@@ -1,5 +1,0 @@
-mutation($id: uuid!, $is_suspended: Boolean!) {
-  update_guests_by_pk(pk_columns: {id: $id}, _set: {is_suspended: $is_suspended}) {
-    id
-  }
-}
